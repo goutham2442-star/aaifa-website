@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { WhatsAppButton } from '@/components/shared/whatsapp-button'
 import { Toaster } from '@/components/ui/sonner'
+import { OrganizationJsonLd } from '@/components/shared/json-ld'
 import { SITE_CONFIG } from '@/lib/constants'
 
 const cormorant = Cormorant_Garamond({
@@ -66,6 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col">
+        <OrganizationJsonLd />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

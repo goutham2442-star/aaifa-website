@@ -66,11 +66,12 @@ export const FOUNDER = {
 
 // ─── Stats ─────────────────────────────────────────────────
 export const STATS = [
-  { value: 16,  suffix: '+', label: 'Years of Experience', sublabel: 'Founder\'s expertise' },
-  { value: 150, suffix: '+', label: 'Active Students',     sublabel: 'India & abroad' },
-  { value: 200, suffix: '+', label: 'Stage Performances',  sublabel: 'Across India' },
-  { value: 8,   suffix: '+', label: 'Awards & Honours',    sublabel: 'National recognition' },
+  { value: 5,    suffix: '+', label: 'Years of Experience', sublabel: 'Est. 2021',           color: 'neon-purple' },
+  { value: 150,  suffix: '+', label: 'Active Students',     sublabel: 'India & abroad',       color: 'neon-blue'   },
+  { value: 5,    suffix: '+', label: 'Programs Offered',    sublabel: 'Classical disciplines', color: 'neon-emerald' },
+  { value: 5000, suffix: '+', label: 'Classes Conducted',   sublabel: 'And counting',         color: 'neon-gold'   },
 ] as const
+
 
 // ─── Navigation ────────────────────────────────────────────
 export const NAV_LINKS = [

@@ -36,11 +36,11 @@ export function Timeline() {
                   TYPE_COLOR[item.type]
                 )}
               />
-              <span className="text-sm font-semibold text-gold-600">{item.year}</span>
-              <h3 className="mt-1 font-display text-xl font-semibold text-foreground">
+              <span className="text-base font-semibold text-gold-600">{item.year}</span>
+              <h3 className="mt-1.5 font-display text-2xl font-semibold text-foreground">
                 {item.title}
               </h3>
-              <p className="mt-1 text-sm text-foreground/70">{item.description}</p>
+              <p className="mt-2 text-base text-foreground/75 leading-relaxed font-body">{item.description}</p>
             </motion.div>
           ))}
         </div>

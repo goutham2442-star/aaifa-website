@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'Mridangam classes',
     'dance classes Bengaluru',
     'Haripriya Pettem',
-    'AAIFA',
+    'Avighna Abhyasa Institute of Fine Arts',
     'classical dance academy',
   ],
   authors: [{ name: SITE_CONFIG.name }],

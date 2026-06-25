@@ -51,90 +51,90 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <Label htmlFor="full_name">Full Name *</Label>
+          <Label htmlFor="full_name" className="text-base font-semibold">Full Name *</Label>
           <input
             id="full_name"
             {...register('full_name')}
-            className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+            className="mt-1.5 w-full rounded-md border border-input bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-ring"
             placeholder="Your name"
           />
           {errors.full_name && (
-            <p className="mt-1 text-xs text-destructive">{errors.full_name.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.full_name.message}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="email">Email *</Label>
+          <Label htmlFor="email" className="text-base font-semibold">Email *</Label>
           <input
             id="email"
             type="email"
             {...register('email')}
-            className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+            className="mt-1.5 w-full rounded-md border border-input bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-ring"
             placeholder="you@example.com"
           />
           {errors.email && (
-            <p className="mt-1 text-xs text-destructive">{errors.email.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
           )}
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <Label htmlFor="phone">Phone</Label>
+          <Label htmlFor="phone" className="text-base font-semibold">Phone</Label>
           <input
             id="phone"
             {...register('phone')}
-            className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+            className="mt-1.5 w-full rounded-md border border-input bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-ring"
             placeholder="+91 9XXXXXXXXX"
           />
           {errors.phone && (
-            <p className="mt-1 text-xs text-destructive">{errors.phone.message}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.phone.message}</p>
           )}
         </div>
 
         <div>
-          <Label htmlFor="inquiry_type">Inquiry Type</Label>
+          <Label htmlFor="inquiry_type" className="text-base font-semibold">Inquiry Type</Label>
           <Select
             defaultValue="general"
             onValueChange={(v) => setValue('inquiry_type', v as ContactFormData['inquiry_type'])}
           >
-            <SelectTrigger id="inquiry_type" className="mt-1.5">
+            <SelectTrigger id="inquiry_type" className="mt-1.5 h-12 text-base px-4">
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="general">General Inquiry</SelectItem>
-              <SelectItem value="enrollment">Enrollment</SelectItem>
-              <SelectItem value="collaboration">Collaboration</SelectItem>
-              <SelectItem value="media">Media / Press</SelectItem>
+              <SelectItem value="general" className="text-base">General Inquiry</SelectItem>
+              <SelectItem value="enrollment" className="text-base">Enrollment</SelectItem>
+              <SelectItem value="collaboration" className="text-base">Collaboration</SelectItem>
+              <SelectItem value="media" className="text-base">Media / Press</SelectItem>
             </SelectContent>
           </Select>
         </div>
       </div>
 
       <div>
-        <Label htmlFor="subject">Subject</Label>
+        <Label htmlFor="subject" className="text-base font-semibold">Subject</Label>
         <input
           id="subject"
           {...register('subject')}
-          className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+          className="mt-1.5 w-full rounded-md border border-input bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-ring"
           placeholder="What is this about?"
         />
       </div>
 
       <div>
-        <Label htmlFor="message">Message *</Label>
+        <Label htmlFor="message" className="text-base font-semibold">Message *</Label>
         <textarea
           id="message"
           rows={5}
           {...register('message')}
-          className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+          className="mt-1.5 w-full rounded-md border border-input bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-ring"
           placeholder="Tell us about your interest in our programs..."
         />
         {errors.message && (
-          <p className="mt-1 text-xs text-destructive">{errors.message.message}</p>
+          <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>
         )}
       </div>
 

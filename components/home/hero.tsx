@@ -1,77 +1,99 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowRight, PlayCircle } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Container } from '@/components/shared/container'
-import { SITE_CONFIG, FOUNDER } from '@/lib/constants'
+import { SITE_CONFIG } from '@/lib/constants'
+import { GoldParticles } from '@/components/home/gold-particles'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-hero-gradient bg-surface-dark py-24 text-white sm:py-32">
-      <div className="pointer-events-none absolute inset-0 opacity-20">
-        <div className="absolute -left-20 top-10 h-72 w-72 animate-float rounded-full bg-crimson/40 blur-3xl" />
-        <div className="absolute right-0 top-1/3 h-72 w-72 animate-float rounded-full bg-gold-500/30 blur-3xl" />
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-black text-white px-4 md:px-6">
+      {/* Ambient Gold Particle Dust */}
+      <GoldParticles />
+
+      {/* Background Image with Zoom effect */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none">
+        <motion.div
+          initial={{ scale: 1.15, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.8 }}
+          transition={{ duration: 2, ease: 'easeOut' }}
+          className="relative h-full w-full"
+        >
+          <img
+            src="https://avighnaabhyasainstitute.in/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-22-at-13.38.27.jpeg"
+            alt="Avighna Abhyasa Fine Arts Background"
+            className="h-full w-full object-cover object-top"
+          />
+        </motion.div>
+        {/* Elegant overlay: Dark gradient that is lighter in the center to show the photo clearly, fading to black */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/85" />
+        
+        {/* Subtle decorative gold-lined border around the hero */}
+        <div className="absolute inset-4 border border-gold-500/20 pointer-events-none z-10 rounded-2xl hidden md:block" />
+        <div className="absolute inset-5 border border-gold-500/10 pointer-events-none z-10 rounded-2xl hidden md:block" />
       </div>
 
-      <Container className="relative grid items-center gap-12 lg:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <span className="mb-4 inline-block rounded-full border border-gold-500/40 bg-gold-500/10 px-4 py-1 text-xs font-medium uppercase tracking-widest text-gold-300">
-            Est. {SITE_CONFIG.founded} · Bengaluru
-          </span>
-          <h1 className="text-hero font-display font-semibold leading-tight">
-            {SITE_CONFIG.tagline}
-          </h1>
-          <p className="mt-3 font-display text-xl text-gold-300 sm:text-2xl">
-            {SITE_CONFIG.taglineSub}
-          </p>
-          <p className="mt-6 max-w-lg text-white/70">{SITE_CONFIG.description}</p>
+      {/* Symmetrical Left/Right Traditional gold vine columns to fill the empty margins */}
+      <div className="absolute left-6 top-1/2 -translate-y-1/2 w-[250px] h-[75%] opacity-[0.08] bg-floral-left pointer-events-none hidden xl:block z-[2]" />
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 w-[250px] h-[75%] opacity-[0.08] bg-floral-right pointer-events-none hidden xl:block z-[2]" />
 
-          <div className="mt-8 flex flex-wrap gap-4">
+      {/* Floating Traditional Mandala backdrop */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] opacity-10 bg-mandala-center pointer-events-none z-0 mix-blend-screen animate-spin" 
+        style={{ animationDuration: '80s' }} 
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto text-center mt-8 md:mt-0">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          <span className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-gold-500/30 bg-gold-50/10 px-8 py-3.5 text-lg font-bold uppercase tracking-[0.25em] text-gold-300 backdrop-blur-sm">
+            <Sparkles className="h-5 w-5 text-gold-400" />
+            Nurturing Classical Traditions
+          </span>
+          
+          <h1 className="text-7xl md:text-9xl lg:text-[6.5rem] font-display font-bold leading-none tracking-wide text-white mt-4 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+            Welcome to <span className="block mt-3 text-shimmer-gold font-bold">Avighna Abhyasa</span> Institute of Fine Arts
+          </h1>
+          
+          <p className="mt-10 text-3xl md:text-4xl max-w-4xl mx-auto font-display italic text-gold-200/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            &ldquo;{SITE_CONFIG.taglineSub || 'Where devotion, discipline, and creativity come alive through dance and music'}&rdquo;
+          </p>
+          
+          <p className="mt-8 text-xl md:text-2xl max-w-4xl mx-auto text-white/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] font-body">
+            A premium sanctuary for Bharatanatyam, Carnatic Music, Mridangam, and visual fine arts. Let the divine journey begin.
+          </p>
+
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button
               asChild
               size="lg"
-              className="bg-crimson hover:bg-crimson-700 hover:shadow-lg"
+              className="w-full sm:w-auto bg-crimson hover:bg-crimson-700 text-white font-semibold tracking-wider uppercase text-lg py-9 px-14 rounded-full shadow-2xl hover:shadow-crimson-500/30 transition-all duration-300 transform hover:-translate-y-1 border border-crimson-600"
             >
-              <Link href="/contact">
-                Enroll Now <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="/programs">
+                Explore Programs <ArrowRight className="ml-2.5 h-5 w-5" />
               </Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="border-gold-400 text-gold-300 hover:bg-gold-500/10 hover:text-gold-200"
+              className="w-full sm:w-auto border-gold-500/40 text-gold-300 hover:bg-gold-500/10 hover:text-gold-200 font-semibold tracking-wider uppercase text-lg py-9 px-14 rounded-full transition-all duration-300 backdrop-blur-sm"
             >
               <Link href="/gallery">
-                <PlayCircle className="mr-2 h-4 w-4" /> Watch Performances
+                View Portfolio
               </Link>
             </Button>
           </div>
         </motion.div>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mx-auto aspect-[4/5] w-full max-w-md"
-        >
-          <div className="absolute -inset-2 rounded-3xl bg-gold-shimmer opacity-30 blur-xl" />
-          <Image
-            src={FOUNDER.photo}
-            alt={FOUNDER.name}
-            fill
-            className="relative rounded-3xl border border-white/10 object-cover shadow-2xl"
-            priority
-          />
-        </motion.div>
-      </Container>
+      {/* Traditional footer border curve decoration (Fades to black to merge with StatsBar) */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
     </section>
   )
 }

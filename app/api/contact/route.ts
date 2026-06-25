@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     if (isResendConfigured) {
       const resend = new Resend(apiKey)
       await resend.emails.send({
-        from: 'AAIFA Website <onboarding@resend.dev>',
+        from: 'Avighna Abhyasa Website <onboarding@resend.dev>',
         to: contactEmailTo,
         replyTo: email,
         subject: subject || `New ${inquiry_type} inquiry from ${full_name}`,
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
     } else {
       console.log('--- Resend Email Transmission (Simulated) ---')
       console.log({
-        from: 'AAIFA Website <onboarding@resend.dev>',
+        from: 'Avighna Abhyasa Website <onboarding@resend.dev>',
         to: contactEmailTo,
         replyTo: email,
         subject: subject || `New ${inquiry_type} inquiry from ${full_name}`,

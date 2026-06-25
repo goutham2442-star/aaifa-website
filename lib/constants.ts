@@ -5,7 +5,7 @@
 
 export const SITE_CONFIG = {
   name:       'Avighna Abhyasa Institute of Fine Arts',
-  shortName:  'AAIFA',
+  shortName:  'Avighna Abhyasa',
   tagline:    'Nurturing Artistic Excellence Through Tradition and Discipline',
   taglineSub: 'Dance with Devotion — Where Every Step Reflects the Soul',
   description:'Premier institute for Bharatanatyam, Carnatic Music, Mridangam and Drawing & Painting in Bengaluru, founded by Guru Smt. Haripriya Pettem.',
@@ -38,7 +38,7 @@ export const SITE_CONFIG = {
   // Real logos from the existing website
   logos: {
     primary:  'https://avighnaabhyasainstitute.in/wp-content/uploads/2021/12/Untitled_design-removebg-preview.png',
-    footer:   'https://avighnaabhyasainstitute.in/wp-content/uploads/2025/10/Untitled-design-7.png',
+    footer:   'https://avighnaabhyasainstitute.in/wp-content/uploads/2021/12/Untitled_design-removebg-preview.png',
     favicon:  'https://avighnaabhyasainstitute.in/wp-content/uploads/2021/12/cropped-Untitled_design-removebg-preview-270x270.png',
   },
 } as const
@@ -282,7 +282,7 @@ export const GALLERY_IMAGES = [
   {
     id:       'g2',
     url:      'https://avighnaabhyasainstitute.in/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-22-at-13.41.30-1.jpeg',
-    alt:      'Classical dance event at AAIFA',
+    alt:      'Classical dance event at Avighna Abhyasa',
     category: 'performances' as const,
   },
   {
@@ -300,7 +300,7 @@ export const GALLERY_IMAGES = [
   {
     id:       'g5',
     url:      'https://avighnaabhyasainstitute.in/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-22-at-13.40.41.jpeg',
-    alt:      'AAIFA cultural event',
+    alt:      'Avighna Abhyasa cultural event',
     category: 'events' as const,
   },
   {
@@ -312,7 +312,7 @@ export const GALLERY_IMAGES = [
   {
     id:       'g7',
     url:      'https://avighnaabhyasainstitute.in/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-22-at-13.38.01-1.jpeg',
-    alt:      'Classical arts training at AAIFA',
+    alt:      'Classical arts training at Avighna Abhyasa',
     category: 'classes' as const,
   },
   {
@@ -330,7 +330,7 @@ export const GALLERY_IMAGES = [
   {
     id:       'g10',
     url:      'https://avighnaabhyasainstitute.in/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-22-at-13.38.27.jpeg',
-    alt:      'AAIFA performance event',
+    alt:      'Avighna Abhyasa performance event',
     category: 'performances' as const,
   },
   {

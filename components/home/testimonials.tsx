@@ -39,13 +39,13 @@ export function Testimonials() {
                   <Star key={i} className="h-4 w-4 fill-gold-400 text-gold-400" />
                 ))}
               </div>
-              <p className="line-clamp-5 text-base text-foreground/80 sm:text-lg">
+              <p className="line-clamp-5 text-xl text-foreground/80 sm:text-2xl italic leading-relaxed">
                 "{testimonial.content}"
               </p>
-              <p className="mt-6 font-display text-lg font-semibold text-foreground">
+              <p className="mt-6 font-display text-2xl font-bold text-foreground">
                 {testimonial.author}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-lg text-muted-foreground mt-1">
                 {testimonial.role} · {testimonial.program}
               </p>
             </motion.div>

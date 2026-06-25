@@ -16,30 +16,30 @@ export function FounderBio() {
       </div>
 
       <div>
-        <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">
+        <span className="mb-2 inline-block text-sm font-bold uppercase tracking-[0.25em] text-gold-600">
           Founder & Director
         </span>
-        <h1 className="text-display font-display font-semibold text-foreground">
+        <h2 className="text-5xl md:text-6xl font-display font-bold text-foreground leading-tight">
           {FOUNDER.name}
-        </h1>
-        <p className="mt-1 text-sm font-medium text-crimson">{FOUNDER.title}</p>
-        <p className="mt-1 text-sm text-muted-foreground">{FOUNDER.qualifications}</p>
+        </h2>
+        <p className="mt-1.5 text-lg font-semibold text-crimson uppercase tracking-wide">{FOUNDER.title}</p>
+        <p className="mt-1 text-base text-muted-foreground">{FOUNDER.qualifications}</p>
 
-        <div className="mt-4 flex flex-wrap gap-4 text-sm">
-          <span className="rounded-full bg-muted px-3 py-1">
+        <div className="mt-4 flex flex-wrap gap-4 text-base font-semibold">
+          <span className="rounded-full bg-muted/80 border border-border px-4 py-1.5">
             {FOUNDER.teachingExp} Teaching Experience
           </span>
-          <span className="rounded-full bg-muted px-3 py-1">
+          <span className="rounded-full bg-muted/80 border border-border px-4 py-1.5">
             {FOUNDER.learningExp} Learning Experience
           </span>
         </div>
 
-        <blockquote className="relative my-6 rounded-lg border-l-4 border-gold-500 bg-card p-4 italic text-foreground/80">
+        <blockquote className="relative my-6 rounded-lg border-l-4 border-gold-500 bg-card p-5 italic text-foreground/90 text-lg md:text-xl leading-relaxed">
           <Quote className="absolute -left-3 -top-3 h-6 w-6 rotate-180 text-gold-400" />
           {FOUNDER.quote}
         </blockquote>
 
-        <p className="text-base leading-relaxed text-foreground/80">{FOUNDER.bio}</p>
+        <p className="text-lg leading-relaxed text-foreground/80 font-body">{FOUNDER.bio}</p>
       </div>
     </section>
   )

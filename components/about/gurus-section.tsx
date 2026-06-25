@@ -11,12 +11,12 @@ export function GurusSection() {
           {FOUNDER.gurus.map((guru) => (
             <div
               key={guru.name}
-              className="rounded-xl border border-border bg-card p-6 text-center"
+              className="relative overflow-hidden rounded-xl border border-gold-200/40 bg-card p-8 text-center bg-lotus-corner shadow-sm hover:shadow-md transition-all duration-300"
             >
-              <h3 className="font-display text-lg font-semibold text-foreground">
+              <h3 className="font-display text-2xl font-bold text-foreground">
                 {guru.name}
               </h3>
-              <p className="mt-1 text-sm text-crimson">{guru.art}</p>
+              <p className="mt-2 text-lg text-crimson font-medium">{guru.art}</p>
             </div>
           ))}
         </div>

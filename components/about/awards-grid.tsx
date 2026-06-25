@@ -19,16 +19,16 @@ export function AwardsGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (i % 4) * 0.08 }}
-              className="card-hover rounded-xl border border-border bg-card p-5 text-center"
+              className="card-hover relative overflow-hidden rounded-xl border border-gold-200/40 bg-card p-6 text-center bg-lotus-corner"
             >
               <AwardIcon className="mx-auto mb-3 h-8 w-8 text-gold-500" />
-              <h3 className="font-display text-base font-semibold text-foreground">
+              <h3 className="font-display text-xl font-bold text-foreground leading-tight">
                 {award.title}
               </h3>
               {'subtitle' in award && award.subtitle && (
-                <p className="text-xs text-muted-foreground">{award.subtitle}</p>
+                <p className="text-base text-muted-foreground mt-1.5 leading-normal">{award.subtitle}</p>
               )}
-              <p className="mt-1 text-sm text-crimson">{award.year}</p>
+              <p className="mt-2 text-lg text-crimson font-semibold">{award.year}</p>
             </motion.div>
           ))}
         </div>

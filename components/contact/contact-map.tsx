@@ -9,7 +9,7 @@ export function ContactMap() {
         height="320"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="AAIFA location map"
+        title="Avighna Abhyasa Institute of Fine Arts location map"
         className="border-0"
       />
     </div>

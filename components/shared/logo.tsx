@@ -22,10 +22,10 @@ export function Logo({ variant = 'primary', className }: LogoProps) {
         priority
       />
       <span className="flex flex-col leading-tight">
-        <span className="font-display text-lg font-semibold text-crimson">
+        <span className="font-display text-xl font-bold text-crimson tracking-wide">
           {SITE_CONFIG.shortName}
         </span>
-        <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
+        <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
           Fine Arts Institute
         </span>
       </span>

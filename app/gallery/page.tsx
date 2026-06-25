@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/shared/container'
-import { SectionHeading } from '@/components/shared/section-heading'
+import { PageBanner } from '@/components/shared/page-banner'
 import { GalleryGrid } from '@/components/gallery/gallery-grid'
 
 export const metadata: Metadata = {
@@ -11,15 +11,17 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <div className="section-padding">
-      <Container>
-        <SectionHeading
-          eyebrow="Moments Captured"
-          title="Our Gallery"
-          subtitle="A glimpse into performances, festivals, and everyday training at AAIFA."
-        />
-        <GalleryGrid />
-      </Container>
-    </div>
+    <>
+      <PageBanner 
+        title="Our Gallery" 
+        subtitle="A glimpse into performances, festivals, celebrations, and everyday training at the institute."
+        page="gallery"
+      />
+      <div className="section-padding bg-surface relative overflow-hidden bg-floral-left bg-floral-right">
+        <Container>
+          <GalleryGrid />
+        </Container>
+      </div>
+    </>
   )
 }

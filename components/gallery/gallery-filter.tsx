@@ -18,15 +18,15 @@ export function GalleryFilter({
   onChange: (value: GalleryCategory | 'all') => void
 }) {
   return (
-    <div className="mb-8 flex flex-wrap justify-center gap-2">
+    <div className="mb-8 flex flex-wrap justify-center gap-2.5">
       {FILTERS.map((filter) => (
         <button
           key={filter.value}
           onClick={() => onChange(filter.value)}
           className={cn(
-            'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+            'rounded-full px-5 py-2.5 text-base font-semibold transition-colors',
             active === filter.value
-              ? 'bg-crimson text-white'
+              ? 'bg-crimson text-white shadow-sm'
               : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground'
           )}
         >

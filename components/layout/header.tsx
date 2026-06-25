@@ -47,8 +47,8 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative text-sm font-medium tracking-wide transition-colors hover:text-crimson',
-                  isActive ? 'text-crimson' : 'text-foreground/80'
+                  'relative text-base font-semibold tracking-wide transition-colors hover:text-crimson',
+                  isActive ? 'text-crimson' : 'text-foreground/90'
                 )}
               >
                 {link.label}
@@ -66,9 +66,9 @@ export function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={SITE_CONFIG.contact.phoneTel}
-            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-crimson"
+            className="flex items-center gap-2 text-base font-semibold text-foreground/90 hover:text-crimson"
           >
-            <Phone className="h-4 w-4" />
+            <Phone className="h-4.5 w-4.5" />
             {SITE_CONFIG.contact.phone}
           </a>
           <Button asChild className="bg-crimson hover:bg-crimson-700">

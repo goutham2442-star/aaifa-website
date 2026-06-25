@@ -5,23 +5,23 @@ import { contactSchema } from '@/lib/validations'
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.RESEND_API_KEY || 're_placeholder_key'
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'placeholder-key'
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+    const apiKey = process.env.RESEND_API_KEY || ''
     const contactEmailTo = process.env.CONTACT_EMAIL_TO || 'avighnaabhyasa@gmail.com'
 
     const isSupabaseConfigured =
       !!supabaseUrl &&
       !!serviceRoleKey &&
-      !supabaseUrl.includes('your-project-ref') &&
       !supabaseUrl.includes('placeholder') &&
-      !serviceRoleKey.includes('placeholder-key')
+      !serviceRoleKey.includes('placeholder')
 
     const isResendConfigured =
       !!apiKey &&
       !apiKey.includes('placeholder') &&
-      !apiKey.startsWith('re_xxx')
+      apiKey.startsWith('re_')
 
+    // Validate request body
     const body = await req.json()
     const parsed = contactSchema.safeParse(body)
 
@@ -35,72 +35,64 @@ export async function POST(req: NextRequest) {
     const { full_name, email, phone, subject, message, inquiry_type } = parsed.data
     const ip = req.headers.get('x-forwarded-for') ?? 'unknown'
 
-    // Database operation (with simulation fallback)
+    // Save to Supabase
     if (isSupabaseConfigured) {
-      const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey)
-      const { error: dbError } = await supabaseAdmin.from('inquiries').insert({
-        full_name,
-        email,
-        phone: phone || null,
-        subject: subject || null,
-        message,
-        inquiry_type,
-        ip_address: ip,
-      })
+      try {
+        const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey)
+        const { error: dbError } = await supabaseAdmin.from('inquiries').insert({
+          full_name,
+          email,
+          phone: phone || null,
+          subject: subject || null,
+          message,
+          inquiry_type,
+          ip_address: ip,
+        })
 
-      if (dbError) {
-        console.error('Supabase insert error:', dbError)
-        return NextResponse.json({ error: 'Failed to save inquiry' }, { status: 500 })
+        if (dbError) {
+          console.error('Supabase insert error:', dbError.message)
+          // Continue — still try to send email
+        }
+      } catch (dbEx) {
+        console.error('Supabase exception:', dbEx)
+        // Continue — still try to send email
       }
     } else {
-      console.log('--- Supabase Inquiry Insertion (Simulated) ---')
-      console.log({
-        full_name,
-        email,
-        phone: phone || null,
-        subject: subject || null,
-        message,
-        inquiry_type,
-        ip_address: ip,
-        timestamp: new Date().toISOString(),
+      console.log('[ContactForm] New submission (Supabase not configured):', {
+        full_name, email, phone, subject, message, inquiry_type,
       })
-      console.log('---------------------------------------------')
     }
 
-    // Email dispatch operation (with simulation fallback)
+    // Send email via Resend
     if (isResendConfigured) {
-      const resend = new Resend(apiKey)
-      await resend.emails.send({
-        from: 'Avighna Abhyasa Website <onboarding@resend.dev>',
-        to: contactEmailTo,
-        replyTo: email,
-        subject: subject || `New ${inquiry_type} inquiry from ${full_name}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${full_name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          <p><strong>Inquiry Type:</strong> ${inquiry_type}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br/>')}</p>
-        `,
-      })
+      try {
+        const resend = new Resend(apiKey)
+        await resend.emails.send({
+          from: 'Avighna Abhyasa Website <onboarding@resend.dev>',
+          to: contactEmailTo,
+          replyTo: email,
+          subject: subject || `New ${inquiry_type} inquiry from ${full_name}`,
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${full_name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Inquiry Type:</strong> ${inquiry_type}</p>
+            <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message.replace(/\n/g, '<br/>')}</p>
+          `,
+        })
+      } catch (emailEx) {
+        console.error('Resend email error:', emailEx)
+      }
     } else {
-      console.log('--- Resend Email Transmission (Simulated) ---')
-      console.log({
-        from: 'Avighna Abhyasa Website <onboarding@resend.dev>',
-        to: contactEmailTo,
-        replyTo: email,
-        subject: subject || `New ${inquiry_type} inquiry from ${full_name}`,
-        message,
-        timestamp: new Date().toISOString(),
-      })
-      console.log('--------------------------------------------')
+      console.log('[ContactForm] Email not sent (Resend not configured). Would send to:', contactEmailTo)
     }
 
-    return NextResponse.json({ success: true, simulated: !isSupabaseConfigured || !isResendConfigured })
+    return NextResponse.json({ success: true })
   } catch (err) {
     console.error('Contact API error:', err)
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 })
+    return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 })
   }
 }

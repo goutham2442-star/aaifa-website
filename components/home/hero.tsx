@@ -51,28 +51,28 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <span className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-gold-500/30 bg-gold-50/10 px-8 py-3.5 text-lg font-bold uppercase tracking-[0.25em] text-gold-300 backdrop-blur-sm">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-50/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-gold-300 backdrop-blur-sm">
             <Sparkles className="h-5 w-5 text-gold-400" />
             Nurturing Classical Traditions
           </span>
           
-          <h1 className="text-7xl md:text-9xl lg:text-[6.5rem] font-display font-bold leading-none tracking-wide text-white mt-4 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-            Welcome to <span className="block mt-3 text-shimmer-gold font-bold">Avighna Abhyasa</span> Institute of Fine Arts
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight tracking-wide text-white mt-4 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+            Welcome to <span className="block mt-2 text-shimmer-gold font-bold">Avighna Abhyasa</span> Institute of Fine Arts
           </h1>
           
-          <p className="mt-10 text-3xl md:text-4xl max-w-4xl mx-auto font-display italic text-gold-200/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+          <p className="mt-6 text-base md:text-xl max-w-3xl mx-auto font-display italic text-gold-200/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
             &ldquo;{SITE_CONFIG.taglineSub || 'Where devotion, discipline, and creativity come alive through dance and music'}&rdquo;
           </p>
           
-          <p className="mt-8 text-xl md:text-2xl max-w-4xl mx-auto text-white/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] font-body">
+          <p className="mt-4 text-sm md:text-base max-w-3xl mx-auto text-white/90 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] font-body">
             A premium sanctuary for Bharatanatyam, Carnatic Music, Mridangam, and visual fine arts. Let the divine journey begin.
           </p>
 
-          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto bg-crimson hover:bg-crimson-700 text-white font-semibold tracking-wider uppercase text-lg py-9 px-14 rounded-full shadow-2xl hover:shadow-crimson-500/30 transition-all duration-300 transform hover:-translate-y-1 border border-crimson-600"
+              className="w-full sm:w-auto bg-crimson hover:bg-crimson-700 text-white font-semibold tracking-wider uppercase text-sm py-5 px-9 rounded-full shadow-2xl hover:shadow-crimson-500/30 transition-all duration-300 transform hover:-translate-y-1 border border-crimson-600"
             >
               <Link href="/programs">
                 Explore Programs <ArrowRight className="ml-2.5 h-5 w-5" />
@@ -82,7 +82,7 @@ export function Hero() {
               asChild
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-gold-500/40 text-gold-300 hover:bg-gold-500/10 hover:text-gold-200 font-semibold tracking-wider uppercase text-lg py-9 px-14 rounded-full transition-all duration-300 backdrop-blur-sm"
+              className="w-full sm:w-auto border-gold-500/40 text-gold-300 hover:bg-gold-500/10 hover:text-gold-200 font-semibold tracking-wider uppercase text-sm py-5 px-9 rounded-full transition-all duration-300 backdrop-blur-sm"
             >
               <Link href="/gallery">
                 View Portfolio
